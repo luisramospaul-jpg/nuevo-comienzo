@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redes de Área Local (LAN) | Redes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="modo-dia">
+  <canvas id="bgCanvas"></canvas>
+  <button id="toggleMode" class="btn-mode" style="z-index: 99999;"><i class="bi bi-moon-stars-fill" id="modeIcon"></i><span id="modeText">Modo Noche</span></button>
+  
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container"><a class="navbar-brand" href="index.html"><i class="bi bi-arrow-left me-2"></i>Volver al Inicio</a></div>
+  </nav>
+
+  <main class="container" style="padding-top: 10rem; padding-bottom: 5rem;">
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold">Configuración de una Red LAN</h1>
+      <p class="lead">El paso a paso práctico para montar una Red de Área Local.</p>
+    </div>
+
+    <div class="row g-4 align-items-center mb-5 flex-row-reverse">
+      <div class="col-lg-6">
+        <div class="glass-card p-4 p-md-5 h-100">
+          <h3 class="mb-3 text-gold-dark">Armando la Red Local (LAN)</h3>
+          <p>Para una red doméstica o de oficina pequeña (usando el rango privado Clase C), el esquema es:</p>
+          <ol class="fs-5 mb-4">
+            <li class="mb-2">El ISP instala un módem/router.</li>
+            <li class="mb-2">El router se configura con IP <code>192.168.1.1</code> (Gateway).</li>
+            <li class="mb-2">Se activa el servidor <strong>DHCP</strong> (asigna IPs del .2 al .254).</li>
+            <li>Los equipos se conectan por cable o vía Wi-Fi.</li>
+          </ol>
+          <div class="alert alert-dark font-monospace small" role="alert">
+            <i class="bi bi-info-circle-fill text-gold me-2"></i> La topología más común es la de <strong>Estrella</strong>, centralizada en el router/switch.
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="animacion-contenedor p-4 rounded-4 text-center">
+          <div class="router-wifi">
+            <i class="bi bi-router-fill"></i>
+            <div class="ondas">
+              <div class="onda"></div><div class="onda"></div><div class="onda"></div>
+            </div>
+          </div>
+          <p class="mt-4 mb-0 font-monospace text-muted small">Simulación de emisión Wi-Fi</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTADAS DE DISPOSITIVOS -->
+    <h3 class="text-center mb-4 text-gold-dark">Dispositivos de la Red</h3>
+    <div class="row g-4 mb-5 justify-content-center">
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalRouter">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'><rect width='300' height='200' fill='%232e2521'/><rect x='110' y='90' width='80' height='30' fill='none' stroke='%23e0b93c' stroke-width='2' rx='5'/><line x1='120' y1='90' x2='115' y2='65' stroke='%23a4b5d1' stroke-width='2'/><line x1='180' y1='90' x2='185' y2='65' stroke='%23a4b5d1' stroke-width='2'/><circle cx='130' cy='105' r='3' fill='%236b8e5a'/><circle cx='145' cy='105' r='3' fill='%23e0b93c'/><text x='150' y='160' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18'>Router</text></svg>" alt="Router">
+          <div class="portada-overlay"><span class="btn btn-gold btn-sm">Ver Detalle <i class="bi bi-info-circle ms-1"></i></span></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalSwitch">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'><rect width='300' height='200' fill='%232e2521'/><rect x='80' y='95' width='140' height='20' fill='none' stroke='%23e0b93c' stroke-width='2' rx='3'/><rect x='90' y='100' width='10' height='10' fill='%23e0b93c'/><rect x='110' y='100' width='10' height='10' fill='%23e0b93c'/><rect x='130' y='100' width='10' height='10' fill='%23e0b93c'/><rect x='150' y='100' width='10' height='10' fill='%23e0b93c'/><rect x='170' y='100' width='10' height='10' fill='%23e0b93c'/><rect x='190' y='100' width='10' height='10' fill='%23e0b93c'/><text x='150' y='160' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18'>Switch</text></svg>" alt="Switch">
+          <div class="portada-overlay"><span class="btn btn-gold btn-sm">Ver Detalle <i class="bi bi-info-circle ms-1"></i></span></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalHost">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'><rect width='300' height='200' fill='%232e2521'/><rect x='110' y='70' width='80' height='50' fill='none' stroke='%23a4b5d1' stroke-width='2' rx='3'/><rect x='140' y='120' width='20' height='5' fill='%23a4b5d1'/><rect x='125' y='125' width='50' height='3' fill='%23a4b5d1'/><text x='150' y='160' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18'>Hosts (PCs)</text></svg>" alt="Hosts">
+          <div class="portada-overlay"><span class="btn btn-gold btn-sm">Ver Detalle <i class="bi bi-info-circle ms-1"></i></span></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5">
+      <a href="index.html" class="btn btn-gold btn-lg"><i class="bi bi-house-door-fill me-2"></i>Volver al Inicio</a>
+    </div>
+  </main>
+
+  <!-- MODALES -->
+  <div class="modal fade" id="modalRouter" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">El Router (Enrutador)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Es el "cerebro" de la red local. Su función principal es conectar tu red LAN con Internet (la red WAN).</p>
+          <ul>
+            <li>Asigna direcciones IP automáticamente mediante <strong>DHCP</strong>.</li>
+            <li>Realiza la traducción <strong>NAT</strong> para que tus dispositivos naveguen.</li>
+            <li>Actúa como cortafuegos (Firewall) básico.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalSwitch" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">El Switch (Conmutador)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Es el dispositivo encargado de conectar los equipos dentro de la misma red local (LAN).</p>
+          <ul>
+            <li>Trabaja en la Capa 2 (Enlace de datos).</li>
+            <li>Utiliza las <strong>direcciones MAC</strong> para saber a qué puerto enviar los datos.</li>
+            <li>Es mucho más inteligente que un HUB, ya que no envía la información a todos, sino solo al destinatario correcto.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalHost" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">Hosts (Dispositivos Finales)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Son todos los equipos que consumen o generan información en la red (PCs, smartphones, impresoras).</p>
+          <ul>
+            <li>Requieren una tarjeta de red (NIC).</li>
+            <li>Deben tener una dirección IP, una máscara de subred y una puerta de enlace (el router) para comunicarse.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-custom text-center py-4">
+    <div class="container">
+      <p class="mb-1 text-muted small"><i class="bi bi-diagram-3-fill me-2 text-gold-dark"></i>Guía Interactiva de Redes Informáticas</p>
+      <p class="mb-0 text-muted small">Proyecto Académico - Ingeniería de Sistemas &copy; <span id="year"></span></p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/fondo.js"></script><script src="js/script.js"></script>
+</body>
+</html>

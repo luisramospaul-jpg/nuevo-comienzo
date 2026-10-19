@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redes Informáticas | Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="modo-dia">
+  <canvas id="bgCanvas"></canvas>
+  <button id="toggleMode" class="btn-mode"><i class="bi bi-moon-stars-fill" id="modeIcon"></i><span id="modeText">Modo Noche</span></button>
+
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="bi bi-diagram-3-fill me-2"></i>Redes<span class="brand-accent">Info</span></a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <span class="badge-hero mb-4 d-inline-block">Ingeniería de Sistemas</span>
+      <h1 class="hero-title mb-4">Fundamentos de <span class="accent-word">Redes</span></h1>
+      <p class="hero-subtitle">Explora los módulos detallados sobre la infraestructura, el direccionamiento IPv4, las clases de red y la configuración práctica de redes de cómputo.</p>
+      <a href="#temas" class="btn btn-gold mt-4">Comenzar a Aprender <i class="bi bi-arrow-down-circle ms-2"></i></a>
+    </div>
+  </header>
+
+  <main class="container mb-5">
+    <section id="temas" class="pt-5">
+      <div class="section-title"><span class="section-line"></span><h2>Módulos de Estudio</h2><span class="section-line"></span></div>
+      
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="text-center mb-3"><i class="bi bi-pc-display display-4 text-gold"></i></div>
+            <h3 class="text-center mb-3">1. Configuración Básica</h3>
+            <p class="text-center text-muted mb-4">Aprende sobre el hardware fundamental, las topologías de red y los dispositivos como Switches y Routers.</p>
+            <a href="tema-1-configuracion.html" class="btn btn-gold mt-auto w-100">Explorar Módulo</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="text-center mb-3"><i class="bi bi-globe2 display-4 text-gold"></i></div>
+            <h3 class="text-center mb-3">2. Clases de Red IPv4</h3>
+            <p class="text-center text-muted mb-4">Descubre el formato de 32 bits, el sistema histórico de clases y sus rangos de direcciones y cantidad de hosts.</p>
+            <a href="tema-2-clases-ipv4.html" class="btn btn-gold mt-auto w-100">Explorar Módulo</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="text-center mb-3"><i class="bi bi-shield-lock display-4 text-gold"></i></div>
+            <h3 class="text-center mb-3">3. Direccionamiento IP</h3>
+            <p class="text-center text-muted mb-4">Entiende la diferencia entre IPs públicas y privadas, el uso de las máscaras de subred y la traducción NAT.</p>
+            <a href="tema-3-direccionamiento.html" class="btn btn-gold mt-auto w-100">Explorar Módulo</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="glass-card p-4 h-100 d-flex flex-column">
+            <div class="text-center mb-3"><i class="bi bi-router display-4 text-gold"></i></div>
+            <h3 class="text-center mb-3">4. Configuración de Red LAN</h3>
+            <p class="text-center text-muted mb-4">El paso a paso práctico para montar una red de área local en casa u oficina, incluyendo DHCP.</p>
+            <a href="tema-4-red-lan.html" class="btn btn-gold mt-auto w-100">Explorar Módulo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-custom text-center py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0 text-start">
+          <h5 class="text-gold-dark mb-3"><i class="bi bi-diagram-3-fill me-2"></i>RedesInfo</h5>
+          <p class="small text-muted mb-0">Proyecto académico enfocado en la documentación y enseñanza de los fundamentos de redes de computadoras.</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0 text-start">
+          <h6 class="text-gold-dark mb-3">Módulos</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="tema-1-configuracion.html" class="text-muted text-decoration-none">1. Configuración Básica</a></li>
+            <li class="mb-2"><a href="tema-2-clases-ipv4.html" class="text-muted text-decoration-none">2. Clases de Red</a></li>
+            <li class="mb-2"><a href="tema-3-direccionamiento.html" class="text-muted text-decoration-none">3. Direccionamiento</a></li>
+            <li class="mb-2"><a href="tema-4-red-lan.html" class="text-muted text-decoration-none">4. Red LAN</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-start">
+          <h6 class="text-gold-dark mb-3">Información Académica</h6>
+          <p class="small text-muted mb-0"><strong>Área:</strong> Redes de Computadoras<br><strong>Nivel:</strong> Ingeniería<br>&copy; <span id="year"></span> Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/fondo.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

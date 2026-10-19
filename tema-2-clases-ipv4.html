@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clases de Red IPv4 | Redes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="modo-dia">
+  <canvas id="bgCanvas"></canvas>
+  <button id="toggleMode" class="btn-mode" style="z-index: 99999;"><i class="bi bi-moon-stars-fill" id="modeIcon"></i><span id="modeText">Modo Noche</span></button>
+  
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container"><a class="navbar-brand" href="index.html"><i class="bi bi-arrow-left me-2"></i>Volver al Inicio</a></div>
+  </nav>
+
+  <main class="container" style="padding-top: 10rem; padding-bottom: 5rem;">
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold">Direcciones IPv4 y sus Clases</h1>
+      <p class="lead">Entendiendo el formato de 32 bits y su división histórica.</p>
+    </div>
+
+    <!-- ¿QUÉ ES UNA IPV4? -->
+    <div class="glass-card p-4 p-md-5 mb-5">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h3 class="mb-3 text-gold-dark">¿Qué es exactamente una dirección IPv4?</h3>
+          <p>Una dirección <strong>IPv4 (Internet Protocol version 4)</strong> es un número lógico único de <strong>32 bits</strong> que se asigna a cada dispositivo conectado a una red que utilice este protocolo.</p>
+          <p>Para que sea fácil de leer para los humanos, esos 32 bits se dividen en <strong>4 bloques de 8 bits (octetos)</strong>, separados por puntos. Cada octeto puede ir desde el 0 hasta el 255.</p>
+          <p class="mb-0 font-monospace bg-dark text-warning p-3 rounded">Ejemplo: <strong>192 . 168 . 1 . 10</strong></p>
+        </div>
+        <div class="col-md-4 text-center mt-4 mt-md-0">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 150' width='100%' height='100%'>
+            <rect x='10' y='50' width='80' height='50' fill='%23e0b93c' rx='5'/>
+            <text x='50' y='82' text-anchor='middle' fill='%231a1614' font-family='monospace' font-size='20' font-weight='bold'>192</text>
+            <rect x='110' y='50' width='80' height='50' fill='%23e0b93c' rx='5'/>
+            <text x='150' y='82' text-anchor='middle' fill='%231a1614' font-family='monospace' font-size='20' font-weight='bold'>168</text>
+            <rect x='210' y='50' width='80' height='50' fill='%23e0b93c' rx='5'/>
+            <text x='250' y='82' text-anchor='middle' fill='%231a1614' font-family='monospace' font-size='20' font-weight='bold'>1</text>
+            <rect x='310' y='50' width='80' height='50' fill='%23e0b93c' rx='5'/>
+            <text x='350' y='82' text-anchor='middle' fill='%231a1614' font-family='monospace' font-size='20' font-weight='bold'>50</text>
+            <text x='50' y='30' text-anchor='middle' fill='%23a4b5d1' font-size='12'>8 bits</text>
+            <text x='150' y='30' text-anchor='middle' fill='%23a4b5d1' font-size='12'>8 bits</text>
+            <text x='250' y='30' text-anchor='middle' fill='%23a4b5d1' font-size='12'>8 bits</text>
+            <text x='350' y='30' text-anchor='middle' fill='%23a4b5d1' font-size='12'>8 bits</text>
+          </svg>" alt="Explicación IPv4" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA DE CLASES -->
+    <div class="glass-card p-4 p-md-5 mb-5">
+      <h3 class="mb-4 text-gold-dark">La división histórica por Clases</h3>
+      <p>En el pasado, para no asignar direcciones al azar, se crearon 5 clases. La clase se definía por los primeros bits del primer octeto:</p>
+      <div class="table-responsive mt-3">
+        <table class="table table-custom table-bordered align-middle text-center">
+          <thead>
+            <tr><th>Clase</th><th>Rango del 1er Octeto</th><th>Máscara por defecto</th><th>Uso Común</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="fw-bold text-success fs-5">A</td><td>1 – 126</td><td>255.0.0.0 (/8)</td><td>Redes gigantes</td></tr>
+            <tr><td class="fw-bold text-primary fs-5">B</td><td>128 – 191</td><td>255.255.0.0 (/16)</td><td>Redes medianas</td></tr>
+            <tr><td class="fw-bold text-warning fs-5">C</td><td>192 – 223</td><td>255.255.255.0 (/24)</td><td>Redes pequeñas</td></tr>
+            <tr><td class="fw-bold fs-5" style="color:#8a5a8f;">D</td><td>224 – 239</td><td>No aplica</td><td>Multicast</td></tr>
+            <tr><td class="fw-bold text-danger fs-5">E</td><td>240 – 255</td><td>No aplica</td><td>Experimental</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- GALERÍA DE IMÁGENES: LAS 5 CLASES -->
+    <h3 class="text-center mb-4 text-gold-dark">Galería Interactiva de Clases</h3>
+    <p class="text-center mb-5 text-muted">Haz clic en cada portada para ver la información detallada.</p>
+    
+    <div class="row g-4 mb-5 justify-content-center">
+      
+      <!-- Portada Clase A -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalClaseA">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'>
+            <rect width='300' height='200' fill='%232e2521'/>
+            <circle cx='150' cy='90' r='45' fill='none' stroke='%23e0b93c' stroke-width='2' opacity='0.5'/>
+            <circle cx='150' cy='90' r='55' fill='none' stroke='%23e0b93c' stroke-width='1' stroke-dasharray='5 5' opacity='0.3'/>
+            <text x='150' y='108' text-anchor='middle' fill='%23e0b93c' font-family='sans-serif' font-size='50' font-weight='bold'>A</text>
+            <text x='150' y='165' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18' letter-spacing='2'>CLASE A</text>
+            <rect x='120' y='180' width='60' height='2' fill='%23e0b93c' opacity='0.5'/>
+          </svg>" alt="Portada Clase A">
+          <div class="portada-overlay">
+            <span class="btn btn-gold btn-sm">Ver Información <i class="bi bi-plus-circle ms-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portada Clase B -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalClaseB">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'>
+            <rect width='300' height='200' fill='%232e2521'/>
+            <rect x='110' y='50' width='80' height='80' rx='10' fill='none' stroke='%236b8e5a' stroke-width='2'/>
+            <text x='150' y='108' text-anchor='middle' fill='%236b8e5a' font-family='sans-serif' font-size='50' font-weight='bold'>B</text>
+            <text x='150' y='165' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18' letter-spacing='2'>CLASE B</text>
+            <rect x='120' y='180' width='60' height='2' fill='%236b8e5a' opacity='0.5'/>
+          </svg>" alt="Portada Clase B">
+          <div class="portada-overlay">
+            <span class="btn btn-gold btn-sm">Ver Información <i class="bi bi-plus-circle ms-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portada Clase C -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalClaseC">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'>
+            <rect width='300' height='200' fill='%232e2521'/>
+            <polygon points='150,40 180,100 120,100' fill='none' stroke='%23c9a227' stroke-width='2'/>
+            <polygon points='150,100 190,160 110,160' fill='none' stroke='%23c9a227' stroke-width='2'/>
+            <text x='150' y='130' text-anchor='middle' fill='%23c9a227' font-family='sans-serif' font-size='45' font-weight='bold'>C</text>
+            <text x='150' y='180' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='16' letter-spacing='2'>CLASE C</text>
+          </svg>" alt="Portada Clase C">
+          <div class="portada-overlay">
+            <span class="btn btn-gold btn-sm">Ver Información <i class="bi bi-plus-circle ms-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portada Clase D -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalClaseD">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'>
+            <rect width='300' height='200' fill='%232e2521'/>
+            <circle cx='150' cy='90' r='25' fill='none' stroke='%238a5a8f' stroke-width='2'/>
+            <circle cx='150' cy='45' r='8' fill='%238a5a8f'/>
+            <circle cx='195' cy='90' r='8' fill='%238a5a8f'/>
+            <circle cx='150' cy='135' r='8' fill='%238a5a8f'/>
+            <circle cx='105' cy='90' r='8' fill='%238a5a8f'/>
+            <line x1='150' y1='45' x2='150' y2='65' stroke='%238a5a8f' stroke-width='2'/>
+            <line x1='195' y1='90' x2='175' y2='90' stroke='%238a5a8f' stroke-width='2'/>
+            <line x1='150' y1='135' x2='150' y2='115' stroke='%238a5a8f' stroke-width='2'/>
+            <line x1='105' y1='90' x2='125' y2='90' stroke='%238a5a8f' stroke-width='2'/>
+            <text x='150' y='100' text-anchor='middle' fill='%238a5a8f' font-family='sans-serif' font-size='35' font-weight='bold'>D</text>
+            <text x='150' y='170' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18' letter-spacing='2'>CLASE D</text>
+          </svg>" alt="Portada Clase D">
+          <div class="portada-overlay">
+            <span class="btn btn-gold btn-sm">Ver Información <i class="bi bi-plus-circle ms-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portada Clase E -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portada-clase" data-bs-toggle="modal" data-bs-target="#modalClaseE">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' width='100%' height='100%'>
+            <rect width='300' height='200' fill='%232e2521'/>
+            <path d='M130,60 L200,60 L200,130 L130,130 Z' fill='none' stroke='%23a13d3d' stroke-width='2'/>
+            <text x='165' y='108' text-anchor='middle' fill='%23a13d3d' font-family='sans-serif' font-size='50' font-weight='bold'>E</text>
+            <text x='150' y='170' text-anchor='middle' fill='%23f5f1ec' font-family='sans-serif' font-size='18' letter-spacing='2'>CLASE E</text>
+            <rect x='120' y='180' width='60' height='2' fill='%23a13d3d' opacity='0.5'/>
+          </svg>" alt="Portada Clase E">
+          <div class="portada-overlay">
+            <span class="btn btn-gold btn-sm">Ver Información <i class="bi bi-plus-circle ms-1"></i></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-5"><a href="tema-3-direccionamiento.html" class="btn btn-gold btn-lg">Siguiente: Direccionamiento <i class="bi bi-arrow-right"></i></a></div>
+  </main>
+
+  <!-- =========================================================
+       MODALES (VENTANAS EMERGENTES CON LA INFORMACIÓN)
+       ========================================================= -->
+
+  <!-- Modal Clase A -->
+  <div class="modal fade" id="modalClaseA" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">Clase A (1 – 126)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Diseñada para redes gigantes. Utiliza el primer bit en <code>0</code>.</p>
+          <ul>
+            <li><strong>Máscara por defecto:</strong> 255.0.0.0 (/8)</li>
+            <li><strong>Hosts por red:</strong> Hasta 16,777,214 equipos.</li>
+            <li><strong>Rango Privado:</strong> <code>10.0.0.0</code> a <code>10.255.255.255</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Clase B -->
+  <div class="modal fade" id="modalClaseB" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">Clase B (128 – 191)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Pensada para redes medianas. Utiliza los primeros bits <code>10</code>.</p>
+          <ul>
+            <li><strong>Máscara por defecto:</strong> 255.255.0.0 (/16)</li>
+            <li><strong>Hosts por red:</strong> Hasta 65,534 equipos.</li>
+            <li><strong>Rango Privado:</strong> <code>172.16.0.0</code> a <code>172.31.255.255</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Clase C -->
+  <div class="modal fade" id="modalClaseC" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">Clase C (192 – 223)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>La más común en hogares y oficinas. Utiliza los bits <code>110</code>.</p>
+          <ul>
+            <li><strong>Máscara por defecto:</strong> 255.255.255.0 (/24)</li>
+            <li><strong>Hosts por red:</strong> 254 equipos (255 menos red y broadcast).</li>
+            <li><strong>Rango Privado:</strong> <code>192.168.0.0</code> a <code>192.168.255.255</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Clase D -->
+  <div class="modal fade" id="modalClaseD" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">Clase D (224 – 239)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Reservada exclusivamente para <strong>Multicast</strong> (envío a grupos). Utiliza los bits <code>1110</code>.</p>
+          <ul>
+            <li><strong>Máscara por defecto:</strong> No aplica.</li>
+            <li><strong>Uso:</strong> Streaming de video, videoconferencias y distribución de contenido.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Clase E -->
+  <div class="modal fade" id="modalClaseE" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-header border-0 bg-transparent">
+          <h5 class="modal-title text-gold-dark fw-bold fs-3">Clase E (240 – 255)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Reservada para uso <strong>experimental e investigación</strong>. Utiliza los bits <code>1111</code>.</p>
+          <ul>
+            <li><strong>Máscara por defecto:</strong> No aplica.</li>
+            <li><strong>Uso:</strong> Pruebas de nuevos protocolos. No se usa en el internet público.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-custom text-center py-4">
+    <div class="container">
+      <p class="mb-1 text-muted small"><i class="bi bi-diagram-3-fill me-2 text-gold-dark"></i>Guía Interactiva de Redes Informáticas</p>
+      <p class="mb-0 text-muted small">Proyecto Académico - Ingeniería de Sistemas &copy; <span id="year"></span></p>
+    </div>
+  </footer>
+  
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/fondo.js"></script><script src="js/script.js"></script>
+</body>
+</html>
